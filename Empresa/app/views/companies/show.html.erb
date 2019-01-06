@@ -23,6 +23,11 @@
 		<%= form.text_field :email, id: :employee_email %>
 	</div>
 
+  <div class="field">
+    <%= form.label :area_id %>
+    <%= form.select :area_id, Area.pluck(:name, :id) %>
+  </div>
+
 	<div class="actions">
 		<%= form.submit %>
 	</div>
@@ -46,6 +51,7 @@
         <td><%= e.first_name %></td>
         <td><%= e.last_name %></td>
         <td><%= e.email %></td>
+        <td><%= Area.find(e.area_id).name %></td>
         <td><%= button_to 'Destroy', company_employees_path(@company, p), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
